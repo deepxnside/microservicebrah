@@ -9,13 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-Console.WriteLine("here"+builder.Configuration.GetConnectionString("RedisCache"));
+Console.WriteLine("here" + builder.Configuration.GetConnectionString("RedisCache"));
 builder.Services.AddStackExchangeRedisCache(
     opts =>
-        opts.Configuration= builder.Configuration.GetConnectionString("RedisCache"));
+        opts.Configuration = builder.Configuration.GetConnectionString("RedisCache"));
 builder.Services.AddScoped<IBasketRepository, BasketRepository>();
 builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
-    opts=>opts.Address= new Uri(builder.Configuration.GetConnectionString("GRPCuri"))
+    opts => opts.Address = new Uri(builder.Configuration.GetConnectionString("GrpcConnection"))
     );
 builder.Services.AddScoped<DiscountgRPCServices>();
 builder.Services.AddSwaggerGen();

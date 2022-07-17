@@ -74,5 +74,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=discountdb;Port=5432;Database=discountdb;Username=admin;Password=admin
+      - ConnectionStrings__GrpcConnection=discount.grpc
     port:
       - "8083:80"
